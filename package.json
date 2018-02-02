@@ -1,0 +1,25 @@
+{
+  "name": "linakostenko",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poohitan/linakostenko.git"
+  },
+  "author": "poohitan@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/poohitan/linakostenko/issues"
+  },
+  "homepage": "https://github.com/poohitan/linakostenko#readme",
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}

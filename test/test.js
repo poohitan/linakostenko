@@ -1,4 +1,5 @@
 import { assert } from 'chai';
+import main from '../src/main';
 import functions from '../src/functions';
 
 describe('forceSpaceAfterPunctuation', function () {
@@ -54,6 +55,20 @@ describe('forceSpaceAfterPunctuation', function () {
     const input = 'Вага - 1.05 кілограма';
     const expected = input;
     const actual = functions.forceSpaceAfterPunctuation(input);
+
+    assert.equal(expected, actual);
+  });
+});
+
+describe('main', function () {
+  it('should prettify the text', function () {
+    const input = `- Ну шо там?
+- Та не знаю... Як завжди,всяка фігня відбувається.`;
+
+    const expected = `— Ну шо там?
+— Та не знаю… Як завжди, всяка фігня відбувається.`;
+
+    const actual = main(input);
 
     assert.equal(expected, actual);
   });

@@ -1,8 +1,14 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb-base",
-  "globals": {
-    "window": false,
-    "document": false
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": [0],
+    "func-names": [1],
+    "prefer-arrow-callback": [1]
   }
 }

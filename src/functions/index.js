@@ -1,4 +1,4 @@
-import forceSpaceBeforeCommasAndDots from './force-space-before-commas-and-dots';
+import forceSpaceAfterPunctuation from './force-space-after-punctuation';
 import normalizeSeriesOfExclamationMarks from './normalize-series-of-exclamation-marks';
 import normalizeSeriesOfQuestionMarks from './normalize-series-of-question-marks';
 import replaceHyphensInDateRangesWithLongDashes from './replace-hyphens-in-date-ranges-with-long-dashes';
@@ -8,7 +8,7 @@ import replaceSeriesOfSpacesWithOneSpace from './replace-series-of-spaces-with-o
 import replaceStraightQuotationMarks from './replace-straight-quotation-marks';
 
 export default {
-  forceSpaceBeforeCommasAndDots,
+  forceSpaceAfterPunctuation,
   normalizeSeriesOfExclamationMarks,
   normalizeSeriesOfQuestionMarks,
   replaceHyphensInDateRangesWithLongDashes,

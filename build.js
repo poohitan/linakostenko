@@ -1,11 +1,7 @@
-/* eslint-disable */
-
 const rollup = require('rollup');
 const babel = require('rollup-plugin-babel');
 const eslint = require('rollup-plugin-eslint');
 const uglify = require('rollup-plugin-uglify');
-
-/* eslint-enable */
 
 const MODULE_NAME = 'LinaKostenko';
 const INPUT = 'src/main.js';

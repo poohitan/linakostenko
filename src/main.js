@@ -11,7 +11,7 @@ export default function (string, options = {}) {
     'replaceSeriesOfDotsWithEllipsis',
     'normalizeSeriesOfExclamationMarks',
     'normalizeSeriesOfQuestionMarks',
-    'forceSpaceBeforeCommasAndDots',
+    'forceSpaceAfterCommasAndDots',
     'replaceSeriesOfSpacesWithOneSpace',
     'replaceHyphensWithLongDashes',
     'replaceHyphensInDateRangesWithLongDashes',

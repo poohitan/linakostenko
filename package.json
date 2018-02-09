@@ -1,14 +1,14 @@
 {
   "name": "linakostenko",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lina Kostenko makes your texts typographically pretty.",
   "keywords": [
     "typography"
   ],
-  "main": "build/linakostenko.js",
-  "module": "build/linakostenko.es.js",
+  "main": "dist/linakostenko.js",
+  "module": "dist/linakostenko.es.js",
   "scripts": {
-    "start": "node build/linakostenko.js",
+    "start": "node dist/linakostenko.js",
     "lint": "eslint \"**/*.js\"",
     "build": "NODE_ENV=build && node build.js",
     "test": "NODE_ENV=test && ./node_modules/mocha/bin/mocha --require babel-polyfill --require babel-register",

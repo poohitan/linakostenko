@@ -1,4 +1,4 @@
-const splitToSentences = require('../helpers/split-to-sentences');
+import splitToSentences from '../helpers/split-to-sentences';
 
 const STRAIGHT_QUOTATION_MARK = '"';
 const FRENCH_QUOTATION_MARKS = ['«', '»'];
@@ -25,7 +25,7 @@ function replaceQuotationMarksInSentence(sentence, { outer, inner }, nested = fa
     + charsAfter;
 }
 
-module.exports = (string, options = {}) => {
+export default (string, options = {}) => {
   let outer;
   let inner;
 
@@ -43,4 +43,4 @@ module.exports = (string, options = {}) => {
   return splitToSentences(string)
     .map(sentence => replaceQuotationMarksInSentence(sentence, { outer, inner }))
     .join('');
-}
+};

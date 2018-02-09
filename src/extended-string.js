@@ -1,4 +1,4 @@
-const functions = require('./functions');
+import functions from './functions/index';
 
 const functionNames = Object.keys(functions);
 
@@ -18,4 +18,4 @@ const ExtendedString = {
   },
 };
 
-module.exports = ExtendedString;
+export default ExtendedString;

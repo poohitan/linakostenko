@@ -1,4 +1,4 @@
-const { WHITESPACE, SENTENCE_DELIMITERS } = require('../constants');
+import { WHITESPACE, SENTENCE_DELIMITERS } from '../constants';
 
 function splitToSentences(string) {
   const sentences = [];
@@ -28,4 +28,4 @@ function splitToSentences(string) {
   return sentences;
 }
 
-module.exports = splitToSentences;
+export default splitToSentences;

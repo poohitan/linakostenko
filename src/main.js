@@ -1,6 +1,10 @@
-const ExtendedString = require('./extended-string');
+import ExtendedString from './extended-string';
 
-module.exports = (string, options = {}) => {
+export default function (string, options = {}) {
+  if (!string) {
+    return '';
+  }
+
   const extendedString = ExtendedString.create(string);
 
   const allMethodsSortedByCallOrder = [
@@ -21,4 +25,4 @@ module.exports = (string, options = {}) => {
   return methodsToCall
     .reduce((result, methodName) => result[methodName](), extendedString)
     .getValue();
-};
+}

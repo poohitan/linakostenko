@@ -1,20 +1,26 @@
-import functions from './functions/index';
+import rules from './rules/index';
+import makeRuleOmitHTML from './utils/make-rule-omit-html';
 
-const functionNames = Object.keys(functions);
+const ruleNames = Object.keys(rules);
 
 const ExtendedString = {
   create(value) {
-    const instance = functionNames.reduce((result, functionName) => Object.assign({}, result, {
-      [functionName]: (...params) => {
-        const newValue = functions[functionName](value, ...params);
-
-        return ExtendedString.create(newValue);
-      },
-    }), {
+    const instance = {
       getValue: () => value,
-    });
+    };
 
-    return instance;
+    return ExtendedString.injectRules(instance, value);
+  },
+
+  injectRules(instance, value) {
+    return ruleNames.reduce((result, name) => Object.assign(result, {
+      [name]: (...params) => {
+        const rule = makeRuleOmitHTML(rules[name]);
+        const newValue = rule(value, ...params);
+
+        return ExtendedString.create(newValue); // make rule calls chainable
+      },
+    }), instance);
   },
 };
 

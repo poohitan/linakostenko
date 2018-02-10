@@ -26,6 +26,14 @@ describe('forceSpaceAfterPunctuation', function () {
     assert.equal(actual, expected);
   });
 
+  it('should add spaces after question sign and comma', function () {
+    const input = 'Одне речення?Друге,речення.';
+    const expected = 'Одне речення? Друге, речення.';
+    const actual = LinaKostenko.forceSpaceAfterPunctuation(input);
+
+    assert.equal(actual, expected);
+  });
+
   it('should add space after exclamation sign', function () {
     const input = 'Одне речення!Друге речення. третє речення';
     const expected = 'Одне речення! Друге речення. третє речення';
@@ -61,12 +69,16 @@ describe('forceSpaceAfterPunctuation', function () {
 
 describe('replaceHyphensWithLongDashes', function () {
   it('should replace hyphens with long dashes', function () {
-    const input = '<p>- Шо там?</p><p>- Та ніц.</p>';
-    const expected = '<p>&mdash;&nbsp;Шо там?</p><p>&mdash;&nbsp;Та ніц.</p>';
+    const input = '<p>-Шо там?</p><p>- Та ніц.</p>';
+    const expected = '<p>—&nbsp;Шо там?</p><p>—&nbsp;Та ніц.</p>';
     const actual = LinaKostenko.replaceHyphensWithLongDashes(input);
 
     assert.equal(actual, expected);
   });
+});
+
+describe('replaceStraightQuotationMarks', function () {
+
 });
 
 describe('main', function () {
@@ -74,8 +86,20 @@ describe('main', function () {
     const input = `- Ну шо там?
 - Та не знаю... Як завжди,всяка фігня відбувається.`;
 
-    const expected = `&mdash;&nbsp;Ну шо там?
-&mdash;&nbsp;Та не знаю… Як завжди, всяка фігня відбувається.`;
+    const expected = `—&nbsp;Ну шо там?
+—&nbsp;Та не знаю… Як завжди, всяка фігня відбувається.`;
+
+    const actual = LinaKostenko(input);
+
+    assert.equal(actual, expected);
+  });
+
+  it('should prettify the text', function () {
+    const input = `<p>-Привіт, шо ти там?</p>
+<p>- Та ніц... А ти як?Чув,ти помер? &quot;Як так &quot;сталось&quot; взагалі?&quot; - спитав мене Вася.</p>`;
+
+    const expected = `<p>—&nbsp;Привіт, шо ти там?</p>
+<p>—&nbsp;Та ніц… А ти як? Чув, ти помер? «Як так „сталось“ взагалі?»&nbsp;— спитав мене Вася.</p>`;
 
     const actual = LinaKostenko(input);
 
@@ -84,6 +108,14 @@ describe('main', function () {
 
   it('shoudn\'t touch HTML tags', function () {
     const input = '<p><img src="http://google.com/images/table,chair-small.jpg" style="display:block; vertical-align:top; margin:5px auto; text-align: center;"></p>';
+    const expected = input;
+    const actual = LinaKostenko(input);
+
+    assert.equal(actual, expected);
+  });
+
+  it('shoudn\'t touch HTML tags', function () {
+    const input = '<p>джфіадлрфівадлгрфіва</p><p>фівалдорфівдлрфаів</p><p><strong>іавдлорфівалдоріфва</strong> </p><p>іфва<em>лдорфі</em>вдалрдлфівоард</p><p>фівафівдалодф<u>ліовардлфоі</u>рвадлорваі</p><p><br></p><p><img src="http://localhost:3600/images/6d1700d6-79b2-4349-842e-f3f001e1a76c/large_chair_small.jpg" style="display: block; vertical-align: top; margin: 5px auto; text-align: center;"></p><p>фівадлоіфвадлор фділвоар фділовардфіва</p>';
     const expected = input;
     const actual = LinaKostenko(input);
 

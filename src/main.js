@@ -2,6 +2,7 @@ import rules from './rules/index';
 import makeRuleOmitHTML from './utils/make-rule-omit-html';
 
 const allRuleNamesSortedByApplyOrder = [
+  'replaceHTMLCodesWithSpecialSymbols',
   'replaceSeriesOfDotsWithEllipsis',
   'normalizeSeriesOfExclamationMarks',
   'normalizeSeriesOfQuestionMarks',

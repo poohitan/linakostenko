@@ -23,6 +23,18 @@ export const SPECIAL_SYMBOLS_HTML_CODES = [{
   symbol: '>',
   code: '&gt;',
 }, {
+  symbol: '«',
+  code: '&laquo;',
+}, {
+  symbol: '»',
+  code: '&raquo;',
+}, {
+  symbol: '„',
+  code: '&bdquo;',
+}, {
+  symbol: '“',
+  code: '&ldquo;',
+}, {
   symbol: ' ',
   code: '&nbsp;',
 }, {
@@ -44,9 +56,6 @@ export const SPECIAL_SYMBOLS_HTML_CODES = [{
   symbol: '©',
   code: '&copy;',
 }, {
-  symbol: '«',
-  code: '&laquo;',
-}, {
   symbol: '®',
   code: '&reg;',
 }, {
@@ -56,11 +65,11 @@ export const SPECIAL_SYMBOLS_HTML_CODES = [{
   symbol: '±',
   code: '&plusmn;',
 }, {
-  symbol: '»',
-  code: '&raquo;',
-}, {
   symbol: '€',
   code: '&euro;',
+}, {
+  symbol: '—',
+  code: '&mdash;',
 }];
 
 export default {

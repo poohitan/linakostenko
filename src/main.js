@@ -7,47 +7,45 @@ const allRuleNamesSortedByApplyOrder = [
   'normalizeSeriesOfExclamationMarks',
   'normalizeSeriesOfQuestionMarks',
   'forceSpaceAfterPunctuation',
+  'forceNonBreakingSpaceAroundLongDashes',
   'replaceSeriesOfSpacesWithOneSpace',
   'replaceHyphensWithLongDashes',
   'replaceHyphensInDateRangesWithLongDashes',
   'replaceStraightQuotationMarks',
 ];
 
+function wrapRule(name, options = {}) {
+  const rule = rules[name];
+
+  if (!rule) {
+    throw new Error(`Rule "${name}" doesn't exist.`);
+  }
+
+  const { ignoreHTML } = options;
+
+  if (ignoreHTML) {
+    return rule;
+  }
+
+  return makeRuleOmitHTML(rule);
+}
+
 const LinaKostenko = (string, options = {}) => {
   if (!string) {
     return '';
   }
 
-  const { ignoreHTML } = options;
-
   const ruleNamesToOmit = Object.keys(options).filter(name => options[name] === false);
   const rulesToApply = allRuleNamesSortedByApplyOrder
     .filter(name => !ruleNamesToOmit.includes(name))
-    .map((name) => {
-      const rule = rules[name];
-
-      if (ignoreHTML) {
-        return rule;
-      }
-
-      return makeRuleOmitHTML(rule);
-    });
+    .map(name => wrapRule(name, options));
 
   return rulesToApply
     .reduce((result, rule) => rule(result), string);
 };
 
 Object.keys(rules).forEach((name) => {
-  LinaKostenko[name] = (string, options = {}) => {
-    const rule = rules[name];
-    const { ignoreHTML } = options;
-
-    if (ignoreHTML) {
-      return rule(string);
-    }
-
-    return makeRuleOmitHTML(rule)(string);
-  };
+  LinaKostenko[name] = (string, options = {}) => wrapRule(name, options)(string);
 });
 
 export default LinaKostenko;

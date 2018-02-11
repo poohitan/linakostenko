@@ -8,6 +8,7 @@ import replaceSeriesOfSpacesWithOneSpace from './replace-series-of-spaces-with-o
 import replaceStraightQuotationMarks from './replace-straight-quotation-marks';
 import replaceHTMLCodesWithSpecialSymbols from './replace-html-codes-with-special-symbols';
 import replaceSpecialSymbolsWithHTMLCodes from './replace-special-symbols-with-html-codes';
+import forceNonBreakingSpaceAroundLongDashes from './force-non-breaking-space-around-long-dashes';
 
 export default {
   forceSpaceAfterPunctuation,
@@ -20,4 +21,5 @@ export default {
   replaceStraightQuotationMarks,
   replaceHTMLCodesWithSpecialSymbols,
   replaceSpecialSymbolsWithHTMLCodes,
+  forceNonBreakingSpaceAroundLongDashes,
 };

@@ -121,4 +121,12 @@ describe('main', function () {
 
     assert.equal(actual, expected);
   });
+
+  it('should only replace HTML codes with symbols', function () {
+    const input = '<p>&mdash;&nbsp;Привіт, шо ти там?</p><p>&mdash;&nbsp;Та ніц&hellip; А ти як? Чув, ти <strong>помер</strong>? &laquo;<strong>Як</strong> так &bdquo;сталось&ldquo; взагалі?&raquo;&nbsp;&mdash; спитав мене Вася.</p>';
+    const expected = '<p>—&nbsp;Привіт, шо ти там?</p><p>—&nbsp;Та ніц… А ти як? Чув, ти <strong>помер</strong>? «<strong>Як</strong> так „сталось“ взагалі?»&nbsp;— спитав мене Вася.</p>';
+    const actual = LinaKostenko(input);
+
+    assert.equal(actual, expected);
+  });
 });

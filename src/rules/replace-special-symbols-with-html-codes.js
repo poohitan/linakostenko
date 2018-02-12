@@ -1,5 +1,5 @@
-import { SPECIAL_SYMBOLS_HTML_CODES } from '../constants';
+import { HTML_ENTITIES } from '../constants/index';
 
-export default string => SPECIAL_SYMBOLS_HTML_CODES
+export default string => HTML_ENTITIES
   .filter(({ symbol }) => symbol !== ' ' && symbol !== '&')
-  .reduce((result, { symbol, code }) => result.replace(new RegExp(`${symbol}`, 'g'), code), string);
+  .reduce((result, { symbol, entity }) => result.replace(new RegExp(`${symbol}`, 'g'), entity), string);

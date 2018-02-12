@@ -1,4 +1,4 @@
-import { SPECIAL_SYMBOLS_HTML_CODES } from '../constants';
+import { HTML_ENTITIES } from '../constants/index';
 
-export default string => SPECIAL_SYMBOLS_HTML_CODES
-  .reduce((result, { symbol, code }) => result.replace(new RegExp(`${code}`, 'g'), symbol), string);
+export default string => HTML_ENTITIES
+  .reduce((result, { symbol, entity }) => result.replace(new RegExp(`${entity}`, 'g'), symbol), string);

@@ -1,4 +1,4 @@
-import { HTML_ZONE_PLACEHOLDER } from '../constants';
+import { HTML_ZONE_PLACEHOLDER } from '../constants/index';
 
 export default string => string
   .replace(/ —/g, '&nbsp;—')

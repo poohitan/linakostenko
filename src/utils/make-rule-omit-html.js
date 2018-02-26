@@ -1,17 +1,19 @@
-import { HTML_ZONE_PLACEHOLDER } from '../constants';
+import { HTML_ZONE_PLACEHOLDER } from '../constants/index';
 import splitToZones from '../utils/split-to-zones';
 
 export default function makeRuleIgnoreHTML(rule) {
   return (value, ...params) => {
     const zones = splitToZones(value);
 
-    const plainText = zones.map((zone) => {
-      if (zone.type === 'html') {
-        return HTML_ZONE_PLACEHOLDER;
-      }
+    const plainText = zones
+      .map((zone) => {
+        if (zone.type === 'html') {
+          return HTML_ZONE_PLACEHOLDER;
+        }
 
-      return zone.content;
-    }).join('');
+        return zone.content;
+      })
+      .join('');
 
     const plainTextWithRuleApplied = rule(plainText, ...params);
 

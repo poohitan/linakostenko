@@ -78,7 +78,31 @@ describe('replaceHyphensWithLongDashes', function () {
 });
 
 describe('replaceStraightQuotationMarks', function () {
+  // TODO
+});
 
+describe('methods chaining', function () {
+  it('should return chainable string', function () {
+    const input = 'test';
+    const expected = 'test';
+    const actual = LinaKostenko
+      .chain(input)
+      .value();
+
+    assert.equal(actual, expected);
+  });
+
+  it('should apply only two rules', function () {
+    const input = 'test!! test???? "test!"';
+    const expected = 'test!!! test??? "test!:';
+    const actual = LinaKostenko
+      .chain(input)
+      .normalizeSeriesOfQuestionMarks()
+      .normalizeSeriesOfExclamaitionMarks()
+      .value();
+
+    assert.equal(actual, expected);
+  });
 });
 
 describe('main', function () {

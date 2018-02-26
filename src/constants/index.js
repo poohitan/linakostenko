@@ -1,3 +1,5 @@
+import HTML_ENTITIES from './html-entities';
+
 export const LETTERS = 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюяўэыАБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯЎЭЫabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPGRSTUVWXYZ';
 export const NUMBERS = '0123456789';
 export const ALPHANUMERIC_CHARACTERS = LETTERS + NUMBERS;

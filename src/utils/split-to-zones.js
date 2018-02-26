@@ -1,4 +1,4 @@
-import { HTML_TAG_REGEX } from '../constants';
+import { HTML_TAG_REGEX } from '../constants/index';
 
 export default (string) => {
   let match;

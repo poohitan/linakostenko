@@ -1,4 +1,4 @@
-import { WHITESPACE, SENTENCE_DELIMITERS } from '../constants';
+import { WHITESPACE, SENTENCE_DELIMITERS } from '../constants/index';
 
 function splitToSentences(string) {
   const sentences = [];

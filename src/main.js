@@ -1,5 +1,6 @@
 import rules from './rules/index';
 import makeRuleOmitHTML from './utils/make-rule-omit-html';
+import ChainableString from './chainable-string';
 
 const allRuleNamesSortedByApplyOrder = [
   'replaceHTMLCodesWithSpecialSymbols',
@@ -47,5 +48,7 @@ const LinaKostenko = (string, options = {}) => {
 Object.keys(rules).forEach((name) => {
   LinaKostenko[name] = (string, options = {}) => wrapRule(name, options)(string);
 });
+
+LinaKostenko.chain = string => ChainableString.create(string);
 
 export default LinaKostenko;

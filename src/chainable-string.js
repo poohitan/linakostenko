@@ -3,13 +3,13 @@ import makeRuleOmitHTML from './utils/make-rule-omit-html';
 
 const ruleNames = Object.keys(rules);
 
-const ExtendedString = {
+const ChainableString = {
   create(value) {
     const instance = {
-      getValue: () => value,
+      value: () => value,
     };
 
-    return ExtendedString.injectRules(instance, value);
+    return ChainableString.injectRules(instance, value);
   },
 
   injectRules(instance, value) {
@@ -18,10 +18,10 @@ const ExtendedString = {
         const rule = makeRuleOmitHTML(rules[name]);
         const newValue = rule(value, ...params);
 
-        return ExtendedString.create(newValue); // make rule calls chainable
+        return ChainableString.create(newValue); // make rule calls chainable
       },
     }), instance);
   },
 };
 
-export default ExtendedString;
+export default ChainableString;

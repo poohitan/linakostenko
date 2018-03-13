@@ -1,11 +1,11 @@
-import { HTML_TAG_REGEX } from '../constants/index';
+import { HTML_TAG_OR_CODE_REGEX } from '../constants/index';
 
 export default (string) => {
   let match;
   const plainTextZones = [];
   const htmlZones = [];
 
-  while (match = HTML_TAG_REGEX.exec(string)) { // eslint-disable-line
+  while (match = HTML_TAG_OR_CODE_REGEX.exec(string)) { // eslint-disable-line
     const begin = match.index;
     const end = begin + match[0].length;
 

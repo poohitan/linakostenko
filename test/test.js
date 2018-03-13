@@ -58,6 +58,14 @@ describe('forceSpaceAfterPunctuation', function () {
     assert.equal(actual, expected);
   });
 
+  it('shouldn\'t add space after html code', function () {
+    const input = 'У Прип&#39;яті Петро з&#39;їв яблуко';
+    const expected = input;
+    const actual = LinaKostenko.forceSpaceAfterPunctuation(input);
+
+    assert.equal(actual, expected);
+  });
+
   it('shouldn\'t add space after dot between numbers', function () {
     const input = 'Вага - 1.05 кілограма';
     const expected = input;
@@ -94,11 +102,11 @@ describe('methods chaining', function () {
 
   it('should apply only two rules', function () {
     const input = 'test!! test???? "test!"';
-    const expected = 'test!!! test??? "test!:';
+    const expected = 'test!!! test??? "test!"';
     const actual = LinaKostenko
       .chain(input)
       .normalizeSeriesOfQuestionMarks()
-      .normalizeSeriesOfExclamaitionMarks()
+      .normalizeSeriesOfExclamationMarks()
       .value();
 
     assert.equal(actual, expected);
